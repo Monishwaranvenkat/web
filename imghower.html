@@ -1,0 +1,89 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- Fig 13.5: onmouseoverout.html -->
+<!-- Events onmouseover and onmouseout. -->
+<html xmlns = "http://www.w3.org/1999/xhtml">
+   <head>
+      <title>Events onmouseover and onmouseout</title>
+      <style type = "text/css">
+         body  { background-color: wheat }
+         table { border-style: groove;
+                 text-align: center;
+                 font-family: monospace;
+                 font-weight: bold }
+         td    { width: 6em }
+      </style>
+      <script type = "text/javascript">
+         <!--
+         image1 = new Image();
+         image1.src = "img.png";
+         image2 = new Image();
+         image2.src = "img2.jpg";
+
+         function mouseOver( e )
+         {
+            if ( !e )
+               var e = window.event;
+
+            var target = getTarget( e );
+            
+            // swap the image when the mouse moves over it
+            if ( target.id == "heading" )
+            {
+               target.src = image2.src;
+               return;
+            } // end if
+            
+            // if an element's id is defined, assign the id to its color
+            // to turn hex code's text the corresponding color
+            if ( target.id )
+                target.style.color = "blue";
+         } // end function mouseOver
+
+         function mouseOut( e )
+         {
+            if ( !e )
+               var e = window.event;
+
+            var target = getTarget( e );
+
+            // put the original image back when the mouse moves away
+            if ( target.id == "heading" )
+            {
+               target.src = image1.src;
+               return;
+            } // end if
+
+            // if an element's id is defined, assign id to innerHTML
+            // to display the color name
+            if ( target.id )
+              target.style.color =" black";
+         } // end function mouseOut
+
+         // return either e.srcElement or e.target, whichever exists
+         function getTarget( e )
+         {
+            if ( e.srcElement )
+               return e.srcElement;
+            else
+               return e.target;
+         } // end function getTarget
+
+         document.onmouseover = mouseOver;
+         document.onmouseout = mouseOut;
+         // -->
+      </script>
+   </head>
+   <body>
+      <img src = "img.png" id = "heading" alt = "Heading Image" />
+      <p id="para">Can you tell a color from its hexadecimal RGB code 
+      value? Look at the hex code, guess its color. To see 
+      what color it corresponds to, move the mouse over the 
+      hex code. Moving the mouse out of the hex code's table 
+      cell will display the color name.</p>
+
+      </table>
+   </body>
+</html>
